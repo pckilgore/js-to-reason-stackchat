@@ -1,0 +1,34 @@
+import React from "react";
+import PropTypes from "prop-types";
+
+export default function Message(props) {
+  const message = props.message;
+
+  return (
+    <li className="media">
+      <div className="media-left">
+        <a href="#">
+          <img
+            className="media-object"
+            src={message.author.image}
+            alt="image"
+          />
+        </a>
+      </div>
+      <div className="media-body">
+        <h4 className="media-heading">{message.author.name}</h4>
+        {message.content}
+      </div>
+    </li>
+  );
+}
+
+Message.propTypes = {
+  message: PropTypes.shape({
+    author: PropTypes.shape({
+      image: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    }).isRequired,
+    content: PropTypes.string
+  })
+};
